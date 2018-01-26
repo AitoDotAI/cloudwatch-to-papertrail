@@ -12,7 +12,7 @@ all: lambda log
 
 deps:
 	rm -rf node_modules
-	yarn
+	yarn --prod
 
 env:
 	rm -f env.json
@@ -34,6 +34,11 @@ deploy: deps env create-zip
 	aws lambda update-function-code --publish \
 	--function-name $(LAMBDA_NAME) \
 	--zip-file fileb://code.zip
+
+	aws lambda update-alias \
+	--function-name "${LAMBDA_NAME}" \
+	--name "${LAMBDA_ALIAS}" \
+	--function-version `aws lambda list-versions-by-function --function "${LAMBDA_NAME}" --max-items 10000 | node -e "let stdin=''; process.stdin.on('data',(chunk)=>{stdin+=chunk}).on('end',()=>{console.log(JSON.parse(stdin).Versions.pop().Version)})"`
 
 log:
 	aws lambda add-permission \

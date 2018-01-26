@@ -22,7 +22,7 @@ Or to update an existing Lambda function:
 
 ```bash
 $ export PAPERTRAIL_HOST=logs.papertrailapp.com PAPERTRAIL_PORT=1234
-$ LAMBDA_NAME=lambda make deploy
+$ LAMBDA_NAME=lambda LAMBDA_ALIAS=prod make deploy
 ```
 
 To stream another log group to an already existing Lambda function:
@@ -36,7 +36,7 @@ By default, we force Lambda to wait for the event loop to empty before shutting 
 
 To reverse this behavior and instead prioritise _shorter execution times_ over _guaranteed delivery_, set `WAIT_FOR_FLUSH=false`, i.e.
 ```bash
-$ LAMBDA_NAME=lambda WAIT_FOR_FLUSH=false make deploy
+$ LAMBDA_NAME=lambda LAMBDA_ALIAS=prod WAIT_FOR_FLUSH=false make deploy
 ```
 
 (The default `WAIT_FOR_FLUSH` value here is the opposite of [Apiary's original version](https://github.com/apiaryio/cloudwatch-to-papertrail) of this function).
