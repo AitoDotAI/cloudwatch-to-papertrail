@@ -3,31 +3,38 @@
   "version": "2.0.1",
   "description": "Lambda function to send AWS CloudWatch logs to Papertrail.",
   "homepage": "https://github.com/tdmalone/cloudwatch-to-papertrail#readme",
-  "author": "Tim Malone <tim@timmalone.id.au>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tdmalone/cloudwatch-to-papertrail.git"
-  },
-  "bugs": {
-    "url": "https://github.com/tdmalone/cloudwatch-to-papertrail/issues"
-  },
+  "repository": "git+https://github.com/tdmalone/cloudwatch-to-papertrail.git",
   "main": "index.js",
+  "author": "Tim Malone <tdmalone@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "lint": "cross-env DEBUG=eslint:cli-engine eslint --color \"**/*.js\" --ignore-pattern '!.eslintrc.js'"
+    "execute": "docker run --rm -v $PWD:/var/task lambci/lambda:nodejs6.10 index.handler {}",
+    "lint": "cross-env DEBUG=eslint:cli-engine eslint --color --ignore-pattern '/coverage/' --ignore-pattern '/docs/' --ignore-pattern '!.eslintrc.js' \"**/*.js\"",
+    "fix": "yarn lint --fix",
+    "test": "jest --verbose --coverage"
   },
   "keywords": [
+    "aws",
     "cloudwatch",
-    "papertrail",
-    "lambda"
+    "lambda",
+    "logging",
+    "logs",
+    "papertrail"
   ],
+  "jest": {
+    "testMatch": [
+      "**/tests/**/*.js"
+    ]
+  },
   "dependencies": {
-    "eslint-config-tdmalone": "",
-    "winston": "",
+    "winston": "^2.4.0",
     "winston-papertrail": "hyrwork/winston-papertrail"
   },
   "devDependencies": {
     "cross-env": "^5.1.0",
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "eslint-config-tdmalone": "^0.0.1",
+    "jest": "^21.2.1",
+    "jest-tobetype": "^1.1.0"
   }
 }

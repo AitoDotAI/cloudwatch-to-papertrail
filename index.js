@@ -2,7 +2,7 @@
  * AWS Lambda function to send a CloudWatch log group stream to Papertrail.
  *
  * @author Apiary Inc.
- * @author Tim Malone <tim@timmalone.id.au>
+ * @author Tim Malone <tdmalone@gmail.com>
  */
 
 'use strict';
