@@ -1,6 +1,6 @@
 # CloudWatch to Papertrail
 
-Lambda to send logs from [AWS CloudWatch](https://aws.amazon.com/cloudwatch/) to [Papertrail](https://papertrailapp.com/).
+An [AWS Lambda](https://aws.amazon.com/lambda/) function to send logs from [CloudWatch](https://aws.amazon.com/cloudwatch/) to [Papertrail](https://papertrailapp.com/).
 
 Originally [written by Apiary Inc](https://github.com/apiaryio/cloudwatch-to-papertrail). This is a forked and modified version, modified mainly to remove [Datadog](https://www.datadoghq.com/) (so it's just CW to PT and nothing else), move from npm to [Yarn](https://yarnpkg.com), and tweaks to environment variables. I also attempt to send the name of the CloudWatch log group to Papertrail as the program name, to help you out when you're logging multiple groups. And there's a Node version upgrade (6.10) and the [LambCI Lambda Docker image](https://github.com/lambci/docker-lambda) is working for testing.
 
