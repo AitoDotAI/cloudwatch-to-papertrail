@@ -22,8 +22,8 @@
     "lambda"
   ],
   "dependencies": {
-    "eslint-config-tdmalone": "",
-    "winston": "",
+    "eslint-config-tdmalone": "*",
+    "winston": "*",
     "winston-papertrail": "hyrwork/winston-papertrail"
   },
   "devDependencies": {
