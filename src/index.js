@@ -9,11 +9,26 @@
 
 const zlib = require( 'zlib' ),
       winston = require( 'winston' ),
-      papertrailTransport = require( 'winston-papertrail' ).Papertrail;
+      papertrailTransport = require('winston-papertrail').Papertrail;
 
-const config = require( './env.json' );
+function getConfig() {
+  const papertrailHost = process.env.PAPERTRAIL_HOST
+  const papertrailPort = process.env.PAPERTRAIL_PORT
+  const lambdaName     = process.env.PAPERTRAIL_LAMBDA_NAME
+  const logGroup       = process.env.PAPERTRAIL_LOG_GROUP
+
+  return {
+    papertrailHost,
+    papertrailPort,
+    lambdaName,
+    logGroup
+  }
+}
+
 
 exports.handler = ( event, context, callback ) => {
+  const config = getConfig()
+
   context.callbackWaitsForEmptyEventLoop = config.waitForFlush;
 
   const payload = Buffer.from( event.awslogs.data, 'base64' );
