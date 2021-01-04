@@ -12,9 +12,11 @@
   "bugs": {
     "url": "https://github.com/tdmalone/cloudwatch-to-papertrail/issues"
   },
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "lint": "cross-env DEBUG=eslint:cli-engine eslint --color \"**/*.js\" --ignore-pattern '!.eslintrc.js'"
+    "build": "npx webpack --config webpack.config.js",
+    "clean": "rm -rf dist/",
+    "lint": "eslint --color \"src/**/*.js\" --ignore-pattern '!.eslintrc.js'"
   },
   "keywords": [
     "cloudwatch",
@@ -22,12 +24,13 @@
     "lambda"
   ],
   "dependencies": {
-    "eslint-config-tdmalone": "*",
-    "winston": "*",
-    "winston-papertrail": "hyrwork/winston-papertrail"
+    "winston": "^3.3.3",
+    "winston-papertrail": "^1.0.5"
   },
   "devDependencies": {
     "cross-env": "^5.1.0",
-    "eslint": "^4.8.0"
+    "eslint": "^4.8.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
   }
 }
