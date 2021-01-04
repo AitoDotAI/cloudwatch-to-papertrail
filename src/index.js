@@ -57,8 +57,8 @@ exports.handler = ( event, context, callback ) => {
 
       host:         config.papertrailHost,
       port:         config.papertrailPort,
-      hostname:     config.lambdaName,
-      program:      data.logGroup || config.logGroup,
+      hostname:     config.lambdaName || 'aito-core',
+      program:      data.logGroup || config.logGroup || 'aito-core',
       flushOnClose: true,
 
       logFormat: ( level, message ) => {
