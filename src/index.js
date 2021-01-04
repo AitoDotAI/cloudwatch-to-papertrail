@@ -3,6 +3,16 @@
  *
  * @author Apiary Inc.
  * @author Tim Malone <tim@timmalone.id.au>
+ *
+ * Original sources at:        https://github.com/tdmalone/cloudwatch-to-papertrail.git
+ * Local, forked version at:   git@github.com:AitoDotAI/cloudwatch-to-papertrail.git
+ *
+ * Changelog:
+ * * 2021-01-04:
+ *   - Changed to build using webpack
+ *   - Rely on stanard eslint config, rather than custom config (from dependency)
+ *   - Upgraded dependencies
+ *   - Config handling to rely on env variables rather than config file
  */
 
 'use strict';
@@ -24,7 +34,6 @@ function getConfig() {
     logGroup
   }
 }
-
 
 exports.handler = ( event, context, callback ) => {
   const config = getConfig()
